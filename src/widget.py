@@ -1,3 +1,6 @@
+from src.masks import get_mask_account, get_mask_card_number
+
+
 def mask_account_card(card_or_account_number: str) -> str:
     """
     Принимает на вход номер карты или счета и возвращает маску.
@@ -7,7 +10,6 @@ def mask_account_card(card_or_account_number: str) -> str:
     numbers = ""
     card_number = ""
     account_number = ""
-
     for number in card_or_account_number:
         if number.isalpha() or number == " ":
             name_number += number
@@ -15,16 +17,16 @@ def mask_account_card(card_or_account_number: str) -> str:
             numbers += number
 
     if len(numbers) == 16:
-        card_number += numbers
+        card_number = get_mask_card_number(numbers)
     elif len(numbers) == 20:
-        account_number += numbers
+        account_number = get_mask_account(numbers)
     else:
-        return "Введен неправильный номер карты или счета"
+        return f"{name_number} введен некорректный номер карты или счета"
 
     if card_number:
-        return f"{name_number} {card_number[0:4]} {card_number[4:6]}** **** {card_number[12:]}"
+        return f"{name_number} {card_number}"
     elif account_number:
-        return f"{name_number} **{account_number[16:]}"
+        return f"{name_number} {account_number}"
 
 
 def get_date(entrance_date: str) -> str:

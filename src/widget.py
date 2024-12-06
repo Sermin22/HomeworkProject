@@ -32,10 +32,9 @@ def mask_account_card(card_or_account_number: str) -> str:
 def get_date(entrance_date: str) -> str:
     """Меняет формат даты"""
 
-    date = entrance_date[8:10]
-    month = entrance_date[5:7]
-    year = entrance_date[0:4]
-    return f"ДД.ММ.ГГГГ   ( {date}.{month}.{year} )"
+    slice_date = entrance_date[:10].split("-")
+    exit_date = ".".join(slice_date[::-1])
+    return f"ДД.ММ.ГГГГ ( {exit_date} )"
 
 
 if __name__ == "__main__":

@@ -27,7 +27,18 @@ def mask_account_card(card_or_account_number: str) -> str:
         return f"{name_number} **{account_number[16:]}"
 
 
+def get_date(entrance_date: str) -> str:
+    """Меняет формат даты"""
+
+    date = entrance_date[8:10]
+    month = entrance_date[5:7]
+    year = entrance_date[0:4]
+    return f"ДД.ММ.ГГГГ   ( {date}.{month}.{year} )"
+
+
 if __name__ == "__main__":
-    card_or_account: str = input("Укажите название карты или укажите, что это счет \
+    card_or_account = input("Укажите название карты или укажите, что это счет \
 и далее введите номер ")
     print(mask_account_card(card_or_account))
+
+    print(get_date("2024-12-06T02:26:18.671407"))

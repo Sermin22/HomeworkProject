@@ -37,8 +37,10 @@ def get_date(entrance_date: str) -> str:
 
 
 if __name__ == "__main__":
-    card_or_account = input("Укажите название карты или укажите, что это счет \
-и далее введите номер ")
+    card_or_account = input(
+        "Укажите название карты или укажите, что это счет \
+и далее введите номер "
+    )
     print(mask_account_card(card_or_account))
 
     print(get_date("2024-12-06T02:26:18.671407"))

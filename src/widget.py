@@ -15,11 +15,11 @@ def mask_account_card(card_or_account_number: str) -> str:
             numbers += number
 
     if len(numbers) == 16:
-        card_number +=numbers
+        card_number += numbers
     elif len(numbers) == 20:
         account_number += numbers
     else:
-        return"Введен неправильный номер карты или счета"
+        return "Введен неправильный номер карты или счета"
 
     if card_number:
         return f"{name_number} {card_number[0:4]} {card_number[4:6]}** **** {card_number[12:]}"

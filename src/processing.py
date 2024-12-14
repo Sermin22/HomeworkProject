@@ -1,7 +1,4 @@
-from typing import Any
-
-
-def filter_by_state(list_of_banking_transactions: list[dict[str, Any]], state: str = "EXECUTED") -> list[dict[str, Any]]:
+def filter_by_state(list_of_banking_transactions: list[dict], state: str = "EXECUTED") -> list[dict]:
     """
     Принимает список словарей и значение для ключа state и возвращает новый список словарей,
     содержащий только те словари, у которых ключ соответствует указанному значению.
@@ -14,7 +11,12 @@ def filter_by_state(list_of_banking_transactions: list[dict[str, Any]], state: s
     return new_list_of_banking_transactions
 
 
-def sort_by_date(list_of_transaction_dates: list[dict[str, Any]], date = True):
+def sort_by_date(list_of_transaction_dates: list[dict], date: bool = True) -> list[dict]:
+    """
+    Принимает список словарей и необязательный параметр, задающий порядок сортировки
+    (по умолчанию — убывание) и возвращает новый список, отсортированный по дате.
+    """
+
     sorted_list_of_transaction_dates = sorted(list_of_transaction_dates, key=lambda i: i.get("date", 0), reverse=date)
     return sorted_list_of_transaction_dates
 

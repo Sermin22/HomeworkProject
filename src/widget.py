@@ -27,6 +27,7 @@ def mask_account_card(card_or_account_number: str) -> str:
         return f"{name_number} {card_number}"
     elif account_number:
         return f"{name_number} {account_number}"
+    return ""
 
 
 def get_date(entrance_date: str) -> str:

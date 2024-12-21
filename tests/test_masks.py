@@ -1,6 +1,10 @@
 import pytest
 from src.masks import get_mask_card_number, get_mask_account
 
+def test_get_mask_card_correct(card: str) -> None:
+    '''Проверяет правильность маскировки карты'''
+    assert get_mask_card_number(card) == "2456 85** **** 9354"
+
 
 @pytest.mark.parametrize("card_number, expected", [
     ("2564569865325698", "2564 56** **** 5698"),
@@ -8,7 +12,7 @@ from src.masks import get_mask_card_number, get_mask_account
     ("1234567898765432", "1234 56** **** 5432")
 ])
 def test_get_mask_card_number_correct(card_number: str, expected: str) -> None:
-    """Тестирование правильности маскирования номера карты"""
+    """Тестирование правильности маскирования номеров карт"""
 
     assert get_mask_card_number(card_number) == expected
 
@@ -44,13 +48,18 @@ def test_get_mask_card_number_wrong_type(card_number: str) -> None:
         assert get_mask_card_number(card_number) == "Ошибка типа данных"
 
 
+def test_get_mask_account_correct_account(account: str) -> None:
+    '''Проверяет правильность маскировки счета'''
+    assert get_mask_account(account) == "**5432"
+
+
 @pytest.mark.parametrize("account_number, expected", [
     ("25645645699865325698", "**5698"),
     ("24568564567384689354", "**9354"),
     ("12340023567898765432", "**5432")
 ])
 def test_get_mask_account_correct(account_number: str, expected: str) -> None:
-    """Тестирование правильности маскирования номера счета"""
+    """Тестирование правильности маскирования номеров счетов"""
 
     assert get_mask_account(account_number) == expected
 

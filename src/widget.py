@@ -6,12 +6,16 @@ def mask_account_card(card_or_account_number: str) -> str:
     Принимает на вход номер карты или счета и возвращает маску.
     Номер карты или счета замаскирован.
     """
+    # Вызывает исключение, если неверный тип данных
+    if not isinstance(card_or_account_number, str):
+        raise TypeError('Ошибка типа данных')
+
     name_number = ""
     numbers = ""
     card_number = ""
     account_number = ""
     for number in card_or_account_number:
-        if number.isalpha() or number == " ":
+        if number.isalpha():
             name_number += number
         if number.isdigit():
             numbers += number

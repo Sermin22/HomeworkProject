@@ -28,9 +28,9 @@ def get_mask_account(account_number: str) -> str:
         return "Введен неправильный номер счета"
 
 
-if __name__ == "__main__":
-    card_number: str = input("Введите номер карты: ")
-    print(get_mask_card_number(card_number))
-
-    account_number: str = input("Введите номер счета: ")
-    print(get_mask_account(account_number))
+# if __name__ == "__main__":
+#     card_number: str = input("Введите номер карты: ")
+#     print(get_mask_card_number(card_number))
+#
+#     account_number: str = input("Введите номер счета: ")
+#     print(get_mask_account(account_number))

@@ -7,8 +7,19 @@ def filter_by_currency(transactions: list, code: str) -> Iterator[dict]:
     соответствует заданной (например, USD)."""
 
     usd_transactions = filter(lambda x: x["operationAmount"]["currency"]["code"] == code, transactions)
+    # usd_transactions = (x for x in transactions if x["operationAmount"]["currency"]["code"] == code)
 
     return usd_transactions
+
+
+def transaction_descriptions(transactions: list) -> Iterator[str]:
+    """Генератор, принимающий список словарей с транзакциями и возвращающий описание
+    каждой операции по очереди"""
+    descriptions = map(lambda x: x["description"], transactions)
+    # descriptions = (x["description"] for x in transactions)
+
+    return descriptions
+
 
 # if __name__ == "__main__":
 #     transactions = ([
@@ -90,4 +101,8 @@ def filter_by_currency(transactions: list, code: str) -> Iterator[dict]:
 #     ])
 #     usd_transactions = filter_by_currency(transactions, "USD")
 #     for _ in range(2):
-#         print(next(usd_transactions))
+#         print(next(usd_transactions, "StopIteration"))
+#
+#     descriptions = transaction_descriptions(transactions)
+#     for _ in range(5):
+#         print(next(descriptions, "StopIteration"))

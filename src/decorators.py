@@ -22,7 +22,7 @@ def log(filename: Any = None) -> Callable:
                 result = None
             finally:
                 end_time = time()
-                print(f"Start time: {start_time}, End time: {end_time}")
+                log_message += f" | Start time: {start_time}, End time: {end_time}"
                 if filename:
                     with open(filename, 'a', encoding='utf-8') as file:
                         file.write(log_message + "\n")
@@ -34,9 +34,9 @@ def log(filename: Any = None) -> Callable:
 
 
 # if __name__ == "__main__":
-#     # @log(filename="mylog.txt")
-#     @log()
+#     @log(filename="mylog.txt")
+#     # @log()
 #     def my_function(x, y):
 #         return x + y
 #
-#     my_function(1, "2")
+#     my_function(1, 2)

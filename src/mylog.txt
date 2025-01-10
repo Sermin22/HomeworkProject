@@ -1,0 +1,1 @@
+my_function ok | Start time: 1736523340.3074913, End time: 1736523340.3074932

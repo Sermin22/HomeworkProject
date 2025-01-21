@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 import requests
-from src.utils import list_financial_transactions
 
 
 def conversion_to_rubles(transactions: list[dict]) -> list:
@@ -39,10 +38,8 @@ def conversion_to_rubles(transactions: list[dict]) -> list:
 
 
 # if __name__ == "__main__":
-#     transactions = list_financial_transactions("../data/transactions.json")
-#     print(conversion_to_rubles(transactions))
-
-    # print(conversion_to_rubles([{"operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}}},
-    #                 {"operationAmount": {"amount": "9824.07", "currency": {"name": "EUR", "code": "EUR"}}}]))
-
-    # print(conversion_to_rubles([{"operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}}}]))
+#     print(conversion_to_rubles([
+#         {"operationAmount": {"amount": "31957.58", "currency": {"name": "руб.", "code": "RUB"}}},
+#         {"operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}}},
+#         {"operationAmount": {"amount": "9824.07", "currency": {"name": "EUR", "code": "EUR"}}}
+#     ]))

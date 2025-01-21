@@ -6,7 +6,7 @@ from src.utils import list_financial_transactions
 
 def conversion_to_rubles(transactions: list[dict]) -> list:
     '''Принимает на вход транзакцию и возвращает сумму транзакции (amount) в рублях, тип данных — float.
-    Если транзакция была в USD или EUR , происходит обращение к внешнему API для получения текущего
+    Если транзакция была в USD или EUR, происходит обращение к внешнему API для получения текущего
     курса валют и конвертации суммы операции в рубли.'''
 
     list_amount = []
@@ -38,6 +38,11 @@ def conversion_to_rubles(transactions: list[dict]) -> list:
     return list_amount
 
 
-if __name__ == "__main__":
-    transactions = list_financial_transactions("../data/transactions.json")
-    print(conversion_to_rubles(transactions))
+# if __name__ == "__main__":
+#     transactions = list_financial_transactions("../data/transactions.json")
+#     print(conversion_to_rubles(transactions))
+
+    # print(conversion_to_rubles([{"operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}}},
+    #                 {"operationAmount": {"amount": "9824.07", "currency": {"name": "EUR", "code": "EUR"}}}]))
+
+    # print(conversion_to_rubles([{"operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}}}]))

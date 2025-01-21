@@ -19,5 +19,5 @@ def list_financial_transactions(file_json: str) -> list[dict[Any, Any]]:
         return []
 
 
-if __name__ == "__main__":
-    print(list_financial_transactions("../data/operations.json"))
+# if __name__ == "__main__":
+#     print(list_financial_transactions("../data/transactions.json"))

@@ -21,4 +21,4 @@ def test_search_no_string_in_operations(transactions):
     уведомляющее об этом'''
 
     result = search_string_in_operations(transactions, "EUR")
-    assert result == "Не найдено ни одной транзакции, подходящей под ваш поиск"
+    assert result == []  # "Не найдено ни одной транзакции, подходящей под ваш поиск"

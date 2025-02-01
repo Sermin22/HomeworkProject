@@ -13,10 +13,7 @@ def search_string_in_operations(operations: list[dict], search: Union[str, int])
             matches = re.findall(search, value, flags=re.IGNORECASE)
             if matches:
                 filtered_list_operations.append(operation)
-    if filtered_list_operations:
-        return filtered_list_operations
-    else:
-        return "Не найдено ни одной транзакции, подходящей под ваш поиск"
+    return filtered_list_operations
 
 
 # if __name__ == "__main__":

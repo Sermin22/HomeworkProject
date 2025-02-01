@@ -7,8 +7,8 @@ def mask_account_card(card_or_account_number: str) -> str:
     Номер карты или счета замаскирован.
     """
     # Вызывает исключение, если неверный тип данных
-    if not isinstance(card_or_account_number, str):
-        raise TypeError('Ошибка типа данных')
+    # if not isinstance(card_or_account_number, str):
+    #     raise TypeError('Ошибка типа данных')
 
     name_number = ""
     numbers = ""
@@ -25,8 +25,7 @@ def mask_account_card(card_or_account_number: str) -> str:
     elif len(numbers) == 20:
         account_number = get_mask_account(numbers)
     else:
-        return f"{name_number} введен некорректный номер карты или счета"
-
+        return ""
     if card_number:
         return f"{name_number} {card_number}"
     elif account_number:
@@ -41,12 +40,12 @@ def get_date(entrance_date: str) -> str:
         return "Неизвестный формат даты"
 
     # Вызывает на исключение, если неверный тип данных
-    if not isinstance(entrance_date, str):
-        raise TypeError('Ошибка типа данных')
+    # if not isinstance(entrance_date, str):
+    #     raise TypeError('Ошибка типа данных')
 
     slice_date = entrance_date[:10].split("-")
     exit_date = ".".join(slice_date[::-1])
-    return f"ДД.ММ.ГГГГ ( {exit_date} )"
+    return exit_date
 
 
 # if __name__ == "__main__":

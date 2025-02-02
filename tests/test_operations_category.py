@@ -5,7 +5,7 @@ from src.operations_category import number_of_operations_category
 
 @pytest.mark.parametrize("categories, expected", [
     (["Перевод организации", "Перевод со счета на счет", "Перевод с карты на карту"],
-     Counter({'Перевод организации': 2, 'Перевод со счета на счет': 2, 'Перевод с карты на карту': 1}))
+     {'Перевод организации': 2, 'Перевод со счета на счет': 2, 'Перевод с карты на карту': 1})
 ])
 def test_number_of_operations_category(transactions, categories, expected):
     '''Тест корректтности работы функции, принимающей список с данными о банковских операциях

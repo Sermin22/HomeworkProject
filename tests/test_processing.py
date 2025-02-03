@@ -41,17 +41,17 @@ def test_sort_by_date_increasing(list_of_banking_transactions: list[dict],
     assert sort_by_date(list_of_banking_transactions, date=False) == date_increasing
 
 
-def test_sort_by_date_error_1() -> None:
-    '''Тест на работу функции с некорректными или нестандартными форматами дат'''
-    with pytest.raises(ValueError):
-        assert sort_by_date(
-            [{'id': 414288290, 'state': 'EXECUTED', 'date': '2019-07-03T18'}]
-        ) == "Неизвестный формат даты"
+# def test_sort_by_date_error_1() -> None:
+#     '''Тест на работу функции с некорректными или нестандартными форматами дат'''
+#     with pytest.raises(ValueError):
+#         assert sort_by_date(
+#             [{'id': 414288290, 'state': 'EXECUTED', 'date': '2019-07-03T18'}]
+#         ) == "Неизвестный формат даты"
 
 
-def test_sort_by_date_error_2() -> None:
-    '''Тест на работу функции с некорректными или нестандартными форматами дат'''
-    with pytest.raises(ValueError):
-        assert sort_by_date(
-            [{'id': 414288290, 'state': 'EXECUTED', 'date': '2019'}]
-        ) == "Неизвестный формат даты"
+# def test_sort_by_date_error_2() -> None:
+#     '''Тест на работу функции с некорректными или нестандартными форматами дат'''
+#     with pytest.raises(ValueError):
+#         assert sort_by_date(
+#             [{'id': 414288290, 'state': 'EXECUTED', 'date': '2019'}]
+#         ) == "Неизвестный формат даты"

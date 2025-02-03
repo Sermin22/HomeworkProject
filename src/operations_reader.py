@@ -9,8 +9,9 @@ def get_data_from_excel(path_to_excel_file: str) -> list[dict]:
     return data_dict
 
 
-def read_csv_dict_reader(filename):
-    with open(filename, encoding='utf-8') as file:
+def read_csv_dict_reader(path_to_csv_file):
+    """Преобразует данные из csv файла в список словарей Python"""
+    with open(path_to_csv_file, encoding='utf-8') as file:
         reader = csv.DictReader(file, delimiter=';')
         data = list(reader)
     return data

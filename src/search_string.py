@@ -1,50 +1,23 @@
-from typing import Iterator
+from typing import Union, List, Dict
+import re
 
 
-def filter_by_currency(transactions: list, code: str) -> Iterator[dict]:
-    """Функция, принимающая на вход список словарей, представляющих транзакции и
-    возвращающая итератор, который поочередно выдает транзакции, где валюта операции
-    соответствует заданной (например, USD)."""
+def search_string_in_operations(operations: list[dict], search: Union[str, int]) -> Union[List[Dict], str]:
+    '''Принимает список словарей с данными о банковских операциях и строку поиска,
+    а возвращает список словарей, у которых в описании есть данная строка.'''
 
-    code_transactions = filter(lambda x: x.get("operationAmount").get("currency").get("code") == code, transactions)
-    # code_transactions = filter(lambda x: x["operationAmount"]["currency"]["code"] == code, transactions)
-    # code_transactions = (x for x in transactions if x["operationAmount"]["currency"]["code"] == code)
-    for code_transaction in code_transactions:
-        yield code_transaction
-
-
-def transaction_descriptions(transactions: list) -> Iterator[str]:
-    """Генератор, принимающий список словарей с транзакциями и возвращающий описание
-    каждой операции по очереди"""
-
-    descriptions = map(lambda x: x.get("description"), transactions)
-    # descriptions = map(lambda x: x["description"], transactions)
-    # descriptions = (x["description"] for x in transactions)
-    for description in descriptions:
-        yield description
-
-
-def card_number_generator(start: int, stop: int) -> Iterator[str]:
-    """Функция генерирующая номера карт в заданном диапазоне от 0000 0000 0000 0001
-    до 9999 9999 9999 9999."""
-
-    if start < 0 or stop > 9999999999999999:
-        raise ValueError("Задан неверный  диапазон номера карты")
-
-    for number in range(start, stop + 1):
-        card_number_reformat = str(number)
-
-        while len(card_number_reformat) < 16:
-            card_number_reformat = "0" + card_number_reformat
-
-        card_number = (f"{card_number_reformat[:4]} {card_number_reformat[4:8]} "
-                       f"{card_number_reformat[8:12]} {card_number_reformat[12:]}")
-
-        yield card_number
+    filtered_list_operations = []
+    for operation in operations:
+        for value in operation.values():
+            value = str(value)
+            matches = re.findall(search, value, flags=re.IGNORECASE)
+            if matches:
+                filtered_list_operations.append(operation)
+    return filtered_list_operations
 
 
 # if __name__ == "__main__":
-#     transactions = ([
+#     transactions = [
 #         {
 #             "id": 939719570,
 #             "state": "EXECUTED",
@@ -120,15 +93,7 @@ def card_number_generator(start: int, stop: int) -> Iterator[str]:
 #             "from": "Visa Platinum 1246377376343588",
 #             "to": "Счет 14211924144426031657"
 #         }
-#     ])
+#     ]
 #
-#     usd_transactions = filter_by_currency(transactions, "USD")
-#     for _ in range(2):
-#         print(next(usd_transactions, "StopIteration"))
-#
-#     descriptions = transaction_descriptions(transactions)
-#     for _ in range(5):
-#         print(next(descriptions, "StopIteration"))
-#
-#     for card_number in card_number_generator(0, 1):
-#         print(card_number)
+#     search_str = input("Введите слово для поиска операции: ")
+#     print(search_string_in_operations(transactions, search_str))
